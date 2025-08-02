@@ -4,25 +4,51 @@
   left: 0;
   width: 100%;
   z-index: 999;
-  background: rgba(0, 0, 0, 0.7);
+  background: transparent; /* Fully transparent by default */
   color: white;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.4rem 1.5rem; /* ⬅️ Reduce vertical padding */
-  height: 48px;
+  padding: 0.4rem 1.5rem;
+  height: 60px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Class added when scrolled */
+.scrolled {
+  background: rgba(0, 0, 0, 0.8); /* More opaque when scrolled */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 
 .logo img {
-  height: 50px;
+  height: 5rem;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5)); /* Add shadow to logo for better visibility on transparent background */
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .navbar {
+    background: rgba(0, 0, 0, 0.8); /* Always slightly opaque on mobile for better readability */
+    padding: 0.3rem 1rem;
+  }
+
+  .logo img {
+    height: 4rem;
+  }
+
+  .navLinks {
+    gap: 1rem;
+    font-size: 0.9rem;
+  }
 }
 
 .navLinks {
   display: flex;
   gap: 1.5rem;
   align-items: center;
-  flex-wrap: wrap;
+  flex-wrap: wrap-reverse;
+  padding-right: 10%;
 }
 
 .navLinks a {
@@ -46,7 +72,110 @@
   cursor: pointer;
   transition: all 0.3s ease;
 }
+/* Navbar container */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
 
+/* Navbar at top (opaque) */
+.navbarTop {
+  background-color: rgba(45, 79, 43, 1); /* Fully opaque green */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Navbar when scrolled (semi-transparent) */
+.navbarScrolled {
+  background-color: rgba(45, 79, 43, 0.85); /* Semi-transparent green */
+  backdrop-filter: blur(5px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Navbar content wrapper */
+.navContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Logo styling */
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+}
+
+/* Navigation links container */
+.navLinks {
+  display: flex;
+  gap: 1.5rem;
+  }
+
+  .navLinks a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5); /* Add text shadow for better visibility on transparent background */
+  transition: color 0.2s ease;
+  }
+
+  .navLinks a:hover {
+  color: #9ACD32; /* Light green hover color */
+  }
+
+
+/* Individual nav link */
+.navLink {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.navLink:hover {
+  color: #FFF1CA; /* Light yellow on hover */
+}
+
+/* Mobile menu button */
+.menuButton {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .menuButton {
+    display: block;
+  }
+
+  .navLinks {
+    display: none;
+  }
+
+  .navLinks.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: rgba(45, 79, 43, 0.95);
+    padding: 1rem 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+}
 .enquire:hover {
   background: #7ce000;
   color: black;
