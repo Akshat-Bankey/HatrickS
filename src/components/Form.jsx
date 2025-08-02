@@ -3,6 +3,7 @@ import styles from "./Form.module.css"; // Import renamed modular CSS
 
 const ContactUs = () => {
     return (
+        <div className={styles.bigContainer}>
         <div className={styles.container}>
             {/* Left section with Google Map */}
             <div className={styles.mapContainer}>
@@ -61,6 +62,7 @@ const ContactUs = () => {
                     </button>
                 </form>
             </div>
+        </div>
         </div>
     );
 };

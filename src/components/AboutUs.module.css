@@ -12,13 +12,13 @@
 
 
 .container {
-  max-width: 900px;
+  max-width: 700px;
   margin: 0 auto;
 }
 
 .heading {
   font-size: clamp(2rem, 5vw, 3rem);
-  color: #e3ff00;
+  color: #FFB823;
   margin-bottom: 20px;
 }
 

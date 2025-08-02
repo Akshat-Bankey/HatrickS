@@ -1,11 +1,22 @@
 /* Main container */
+.bigContainer {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #2D4F2B;
+}
+
 /* Main container */
 .container {
     display: flex;
     flex-direction: row;
-    width: 100vw; /* Occupies the full viewport width */
-    height: 100vh; /* Occupies the full viewport height */
-    background-color:#2D4F2B ; /* Black background for both sections */
+    width: 100%;
+    max-width: 1200px;
+    height: auto;
+    min-height: 80vh;
+    background-color: #2D4F2B;
     color: white;
 }
 
@@ -103,16 +114,23 @@
 
 /* Responsive styles for smaller devices */
 @media (max-width: 768px) {
+    .bigContainer {
+        width: 100%;
+    }
+
     .container {
         flex-direction: column; /* Stacks map and form vertically */
         height: auto;
+        width: 100%;
+        max-width: 100%;
     }
 
     .mapContainer,
     .formContainer {
         flex: none;
         width: 100%; /* Makes sections take full width */
-        height: 50rem;
+        height: auto;
+        min-height: 400px;
     }
 
     .mapIframe {
