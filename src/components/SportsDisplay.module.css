@@ -1,0 +1,262 @@
+/* Main container */
+.sportsDisplayContainer {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0.5rem;
+  color: #333;
+}
+
+/* Heading style */
+.sportsHeading {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: #0B6623;
+  position: relative;
+}
+
+.sportsHeading::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 4px;
+  background-color: #0B6623;
+  margin: 0.5rem auto 0;
+  border-radius: 2px;
+}
+
+/* Grid layout for sports cards */
+.sportsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+  position: relative; /* For proper z-index handling */
+  z-index: 1;
+}
+
+/* Individual sport card */
+.sportCard {
+  background-color: white;
+  border-radius: 10px;
+  overflow: visible; /* Changed from hidden to visible */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  perspective: 1000px;
+  height: 300px;
+  position: relative; /* Added for proper positioning */
+  z-index: 1; /* Base z-index */
+}
+
+.sportCard.active {
+  z-index: 10; /* Higher z-index when active */
+}
+
+.sportCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Card inner container for flip effect */
+.sportCardInner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  overflow: visible; /* Changed from hidden to visible */
+}
+
+/* Active state for card flip */
+.sportCard.active .sportCardInner {
+  transform: rotateY(180deg);
+  z-index: 20; /* Ensure flipped card stays on top */
+}
+
+/* Card front and back common styles */
+.sportCardFront, .sportCardBack {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px; /* Match parent border radius */
+  overflow: hidden; /* Keep contents inside the card */
+}
+
+/* Front of card */
+.sportCardFront {
+  background-color: #f8f8f8;
+}
+
+/* Back of card - flipped */
+.sportCardBack {
+  background-color: white;
+  transform: rotateY(180deg);
+  padding: 1rem;
+  justify-content: flex-start;
+  overflow-y: auto; /* Allow scrolling for overflowing content */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); /* Stronger shadow for back card */
+}
+
+/* Sport image container */
+.sportImage {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+/* Overlay for text on image */
+.sportImageOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
+  padding: 1.5rem 1rem 1rem;
+  color: white;
+  text-align: center;
+}
+
+.sportImageOverlay h3 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+/* Back card content styling */
+.sportCardBack h3 {
+  color: #0B6623;
+  margin-top: 0;
+  font-size: 1.5rem;
+  border-bottom: 2px solid #0B6623;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.sportDescription {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  flex-grow: 1;
+}
+
+.sportFeatures {
+  margin-bottom: 1rem;
+}
+
+.sportFeatures h4 {
+  margin: 0 0 0.5rem 0;
+  color: #0B6623;
+  font-size: 1rem;
+}
+
+.sportFeatures ul {
+  margin: 0;
+  padding-left: 1.5rem;
+  font-size: 0.9rem;
+}
+
+.sportFeatures li {
+  margin-bottom: 0.25rem;
+}
+
+/* Enroll button */
+.learnMoreBtn {
+  background-color: #0B6623;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.9rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  align-self: flex-start;
+  font-weight: bold;
+  margin-top: auto;
+}
+
+.learnMoreBtn:hover {
+  background-color: #094d1b;
+}
+
+/* Additional info section */
+.infoSection {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1rem;
+  background-color: #f8f8f8;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.infoSection h3 {
+  color: #0B6623;
+  margin-top: 0;
+}
+
+.infoSection p {
+  line-height: 1.6;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .sportsGrid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .sportsDisplayContainer {
+    padding: 1.5rem;
+  }
+
+  .sportsHeading {
+    font-size: 2rem;
+  }
+
+  .sportsGrid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .sportCard {
+    height: 280px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sportsDisplayContainer {
+    padding: 0.5rem;
+  }
+
+  .sportsGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .sportsHeading {
+    font-size: 1.75rem;
+  }
+
+  .sportImage {
+    height: 180px;
+  }
+
+  .sportCard {
+    height: 250px;
+  }
+
+  .sportDescription {
+    font-size: 0.85rem;
+  }
+
+  .sportFeatures ul {
+    font-size: 0.85rem;
+  }
+}

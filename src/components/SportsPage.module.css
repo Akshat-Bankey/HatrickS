@@ -1,0 +1,239 @@
+/* Simple container for sports display */
+.simpleSportsContainer {
+  width: 100%;
+  padding: 2rem 1rem;
+  background-color: #B6B09F;
+  overflow: hidden;
+}
+
+/* Main heading style */
+.mainHeading {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: #2D4F2B;
+  position: relative;
+}
+
+.mainHeading::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 4px;
+  background-color: #0B6623;
+  margin: 0.5rem auto 0;
+  border-radius: 2px;
+}
+
+/* Wrapper for sports display to control overflow */
+.sportsDisplayWrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+  overflow: visible;
+}
+
+@media (max-width: 768px) {
+  .simpleSportsContainer {
+    padding: 1.5rem 0.5rem;
+  }
+
+  .mainHeading {
+    font-size: 2rem;
+  }
+}
+
+.heroContent {
+  max-width: 800px;
+}
+
+.heroContent h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.heroContent p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.heroButton {
+  background-color: #0B6623;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-weight: bold;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.heroButton:hover {
+  background-color: #094d1b;
+  transform: translateY(-3px);
+}
+
+/* Sports display section */
+.sportsSection {
+  padding: 4rem 0;
+  background-color: #f8f8f8;
+}
+
+/* Testimonial section */
+.testimonialSection {
+  padding: 4rem 2rem;
+  background-color: white;
+  text-align: center;
+}
+
+.testimonialSection h2 {
+  color: #0B6623;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.testimonialSection h2::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 4px;
+  background-color: #0B6623;
+  margin: 0.5rem auto 0;
+  border-radius: 2px;
+}
+
+.testimonialGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.testimonialCard {
+  background-color: #f8f8f8;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.testimonialCard:hover {
+  transform: translateY(-5px);
+}
+
+.testimonialContent {
+  padding: 2rem;
+}
+
+.testimonialContent p {
+  font-style: italic;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.testimonialAuthor {
+  font-weight: bold;
+  color: #0B6623;
+}
+
+/* Call-to-action section */
+.ctaSection {
+  padding: 4rem 2rem;
+  background-color: #0B6623;
+  color: white;
+  text-align: center;
+}
+
+.ctaSection h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.ctaSection p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ctaButton {
+  background-color: white;
+  color: #0B6623;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-weight: bold;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.ctaButton:hover {
+  background-color: #f0f0f0;
+  transform: translateY(-3px);
+}
+
+/* Responsive styles */
+@media (max-width: 1200px) {
+  .testimonialGrid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .heroContent h1 {
+    font-size: 2.5rem;
+  }
+
+  .heroContent p {
+    font-size: 1rem;
+  }
+
+  .testimonialSection,
+  .ctaSection {
+    padding: 3rem 1.5rem;
+  }
+
+  .testimonialSection h2,
+  .ctaSection h2 {
+    font-size: 2rem;
+  }
+
+  .ctaSection p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .heroContent h1 {
+    font-size: 2rem;
+  }
+
+  .heroSection {
+    height: 50vh;
+  }
+
+  .heroButton,
+  .ctaButton {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  .testimonialGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .testimonialSection h2,
+  .ctaSection h2 {
+    font-size: 1.75rem;
+  }
+}

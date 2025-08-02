@@ -1,0 +1,163 @@
+/* Main container */
+/* Main container */
+.container {
+    display: flex;
+    flex-direction: row;
+    width: 100vw; /* Occupies the full viewport width */
+    height: 100vh; /* Occupies the full viewport height */
+    background-color:#2D4F2B ; /* Black background for both sections */
+    color: white;
+}
+
+/* Right-side form container */
+.formContainer {
+    flex: 1; /* Divides space equally (50%) */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centers form vertically */
+    align-items: center; /* Centers form horizontally */
+    width: 100%; /* Ensures it occupies full horizontal space */
+    height: 100%; /* Spans the full height of the parent container */
+    background-color: #2D4F2B;
+    color: white;
+    border-left: 1px solid #2D4F2B; /* Divider between map and form */
+}
+
+/* Left-side Google Map container */
+.mapContainer {
+    flex: 1; /* Divides space equally (50%) */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Google Map Iframe styles */
+.mapIframe {
+    width: 90%;
+    height: 90%;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Heading for Contact Us */
+.heading {
+    margin-bottom: 20px;
+    color: white;
+    font-size: 2rem;
+    text-align: center;
+}
+
+/* Form styling */
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 80%; /* Restricts form width for better UX */
+}
+
+.label {
+    margin-bottom: 8px;
+    color: #f0f0f0;
+    font-size: 1rem;
+}
+
+.input,
+.textarea {
+    font-size: 1rem;
+    padding: 10px;
+    margin-bottom: 16px;
+    border: 1px solid #555;
+    border-radius: 4px;
+    background-color: #FFF1CA;
+    color: white;
+    width: 100%;
+}
+
+.input:focus,
+.textarea:focus {
+    outline: none;
+    border-color: #84b000;
+    background-color: #84b067;
+}
+
+.textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.button {
+    padding: 12px 20px;
+    font-size: 1rem;
+    color: white;
+    background-color: #9ACD32;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    align-self: flex-start;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive styles for smaller devices */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column; /* Stacks map and form vertically */
+        height: auto;
+    }
+
+    .mapContainer,
+    .formContainer {
+        flex: none;
+        width: 100%; /* Makes sections take full width */
+        height: 50rem;
+    }
+
+    .mapIframe {
+        width: 100%; /* Iframe adjusts to full width */
+        height: 300px; /* Fixed height for smaller viewports */
+    }
+
+    .formContainer {
+        padding: 10px;
+        border-left: none;
+        border-top: 1px solid #9ACD32; /* Adds divider for stacked view */
+    }
+
+    .button {
+        width: 100%; /* Full width button on smaller screens */
+    }
+
+    /* Main container */
+    .container {
+        display: flex;
+        flex-direction: row;
+        width: 100vw; /* Occupies the full viewport width */
+        height: 100vh; /* Occupies the full viewport height */
+        background-color: #FFFDD0; /* Black background for both sections */
+        color: white;
+    }
+
+    /* Right-side form container */
+    .formContainer {
+        flex: 1; /* Divides space equally (50%) */
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* Centers form vertically */
+        align-items: center; /* Centers form horizontally */
+        width: 100%; /* Ensures it occupies full horizontal space */
+        height: 100%; /* Spans the full height of the parent container */
+        padding: 20px; /* Adds spacing inside the container */
+        background-color:#FFFDD0;
+        color: white;
+        border-left: 1px solid #333; /* Divider between map and form */
+    }}
+    :root {
+        --form-width: 100%; /* Default form width */
+    }
+    .responsive-form {
+        width: var(--form-width); /* Uses CSS variable for maintainability */
+    }
+

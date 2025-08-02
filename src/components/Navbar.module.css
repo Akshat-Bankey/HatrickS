@@ -1,0 +1,77 @@
+.navbar {
+  position: fixed; /* ⬅️ This is key */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.4rem 1.5rem; /* ⬅️ Reduce vertical padding */
+  height: 48px;
+}
+
+
+.logo img {
+  height: 50px;
+}
+
+.navLinks {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.navLinks a {
+  text-decoration: none;
+  color: white; /* ⭐ white links */
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.navLinks a:hover {
+  color: #7ce000;
+}
+
+.enquire {
+  padding: 0.5rem 1rem;
+  border: 2px solid #7ce000;
+  border-radius: 25px;
+  background: transparent;
+  color: #7ce000;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.enquire:hover {
+  background: #7ce000;
+  color: black;
+}
+
+.contact {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: white;
+  font-size: 0.9rem;
+}
+
+.contact span {
+  font-size: 1.2rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .navLinks {
+    display: none;
+  }
+
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

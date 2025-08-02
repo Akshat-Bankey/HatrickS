@@ -1,0 +1,29 @@
+.section {
+  background-color: #708A58;
+  color: white;
+  padding: 100px 20px;
+  min-height: 300px;
+  text-align: center;
+  z-index: 1;
+  position: relative;
+  width: 100vw;              /* ✅ Full screen width */
+  box-sizing: border-box;    /* ✅ Includes padding in width */
+}
+
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.heading {
+  font-size: clamp(2rem, 5vw, 3rem);
+  color: #e3ff00;
+  margin-bottom: 20px;
+}
+
+.description {
+  font-size: 1.2rem;
+  color: #ccc;
+  line-height: 1.6;
+}
