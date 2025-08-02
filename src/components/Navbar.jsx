@@ -1,45 +1,94 @@
 import React, { useState, useEffect } from 'react';
 import styles from './Navbar.module.css';
-import logo from '../assets/logo.png'; // Replace with actual logo
+import logo from '../assets/logo.png';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
 
+  // Handle scroll effects
   useEffect(() => {
     const handleScroll = () => {
-      // Check if window exists (for SSR compatibility)
-      if (typeof window !== 'undefined') {
-        // Set scrolled state based on scroll position
-        setScrolled(window.scrollY > 10);
-      }
+      // Set scrolled state based on scroll position
+      const scrollPosition = window.scrollY;
+      setScrolled(scrollPosition > 10);
+
+      // Update active section based on scroll position
+      const sections = ['home', 'about', 'sports', 'services', 'contact'];
+
+      sections.forEach(section => {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          if (rect.top <= 100 && rect.bottom >= 100) {
+            setActiveSection(section);
+          }
+        }
+      });
     };
 
-    // Add scroll event listener
     window.addEventListener('scroll', handleScroll);
-
-    // Check initial scroll position
     handleScroll();
 
-    // Clean up event listener
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Handle smooth scrolling
+  const scrollToSection = (sectionId) => {
+    setMobileMenuOpen(false);
+    const element = document.getElementById(sectionId);
+    if (element) {
+      window.scrollTo({
+        top: element.offsetTop - 80,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <header className={`${styles.navbar} ${scrolled ? styles.scrolled : ''}`}>
-      <div className={styles.logo}>
-        <img src={logo} alt="4K Sports" />
-      </div>
+      <div className={styles.navContainer}>
+        <div className={styles.logo}>
+          <img src={logo} alt="Hatrick Sports" />
+          <span className={styles.logoText}>Hatrick<span>Sports</span></span>
+        </div>
 
-      <nav className={styles.navLinks}>
-        <a href="#">Home</a>
-        <a href="#">About Us</a>
-        <a href="#">Sports</a>
-        <a href="#">Services</a>
-        <a href="#">Contact Us</a>
-      </nav>
+        <button 
+          className={styles.mobileMenuButton} 
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          aria-label="Toggle menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <nav className={`${styles.navLinks} ${mobileMenuOpen ? styles.mobileOpen : ''}`}>
+          {['home', 'about', 'sports', 'services', 'contact'].map(section => (
+            <a 
+              key={section}
+              href={`#${section}`}
+              className={activeSection === section ? styles.active : ''}
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToSection(section);
+              }}
+            >
+              {section.charAt(0).toUpperCase() + section.slice(1)}
+              {activeSection === section && <span className={styles.activeIndicator}></span>}
+            </a>
+          ))}
+          <a href="#contact" className={styles.ctaButton} onClick={(e) => {
+            e.preventDefault();
+            scrollToSection('contact');
+          }}>Get in Touch</a>
+        </nav>
+      </div>
     </header>
   );
 };
 
 export default Navbar;
+
 

@@ -1,0 +1,91 @@
+:root {
+  /* Primary brand colors */
+  --primary-dark: #1A3A40;    /* Deep teal */
+  --primary: #F8F9FA;         /* Teal */
+  --primary-light: #a2b292;   /* Light teal */
+  --accent: #F9A826;          /* Orange/gold accent */
+  --accent-light: #FFD166;    /* Light gold */
+
+  /* Neutral colors */
+  --dark: #222831;            /* Almost black */
+  --gray-dark: #393E46;       /* Dark gray */
+  --gray: #777C85;            /* Medium gray */
+  --gray-light: #D8D8D8;      /* Light gray */
+  --light: #F8F9FA;           /* Off-white */
+
+  /* Feedback colors */
+  --success: #06D6A0;         /* Green */
+  --info: #0ACDFF;            /* Blue */
+  --warning: #FFD166;         /* Yellow */
+  --danger: #EF476F;          /* Red */
+
+  /* Typography */
+  --font-heading: 'Montserrat', sans-serif;
+  --font-body: 'Open Sans', sans-serif;
+
+  /* Spacing */
+  --space-xs: 0.25rem;    /* 4px */
+  --space-sm: 0.5rem;      /* 8px */
+  --space-md: 1rem;        /* 16px */
+  --space-lg: 2rem;        /* 32px */
+  --space-xl: 4rem;        /* 64px */
+
+  /* Borders & Shadows */
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 16px;
+  --border-radius-full: 9999px;
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.1);
+
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+}
+
+/* Utility classes */
+.text-gradient {
+  background: linear-gradient(90deg, var(--primary) 0%, var(--primary-light) 50%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+
+.bg-gradient {
+  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+}
+
+.accent-gradient {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+}
+
+/* Animation classes */
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-in;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.5s ease-out;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(20px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
