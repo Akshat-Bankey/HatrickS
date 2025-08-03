@@ -7,6 +7,8 @@ import ContactUs from '../components/Form.jsx';
 import Footer from '../components/Footer.jsx';
 import AutoScrollGallery from '../components/AutoScrollGallery.jsx';
 import styles from './Home.module.css';
+import Clients from '../components/Clients.jsx';
+
 
 // Uncomment to use lazy loading instead of direct imports
 // const AboutUs = lazy(() => import('../components/AboutUs'));
@@ -48,22 +50,28 @@ const Home = () => {
         <div className={styles.pageContainer}>
             <header className={styles.headerSection}>
                 <Navbar />
-                <div className={styles.heroWrapper}>
+                <div id='home' className={styles.heroWrapper}>
                     <Hero />
                 </div>
             </header>
             <div className={styles.homeContainer}>
-                <section className={styles.aboutWrapper}>
+                <section id='about' className={styles.aboutWrapper}>
                     <AboutUs />
                 </section>
 
-                <section className={styles.sportsSection}>
-                    <div className={styles.contentContainer}>
+                <section  id="sports" className={styles.sportsSection}>
+                    <div  className={styles.contentContainer}>
                         <SportsPage />
                     </div>
                 </section>
-
-                <section
+                
+           <section className={styles.clientsSectionWrapper}>
+           <div className={styles.contentContainer}>
+            <Clients />
+           </div>
+           </section>
+      
+                <section id='services'
                     ref={galleryRef}
                     className={`${styles.gallerySection} ${isGalleryVisible ? styles['is-visible'] : ''}`}
                 >
@@ -72,13 +80,13 @@ const Home = () => {
                     </div>
                 </section>
 
-                <section className={styles.formSectionWrapper}>
+                <section id='contact' className={styles.formSectionWrapper}>
                     <div className={styles.contentContainer}>
                         <ContactUs />
                     </div>
                 </section>
 
-                <section className={styles.footerSectionWrapper}>
+                <section id='contact' className={styles.footerSectionWrapper}>
                     <div className={styles.contentContainer}>
                         <Footer />
                     </div>

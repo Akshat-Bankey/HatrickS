@@ -5,6 +5,11 @@
   text-align: center;
 }
 
+html {
+  scroll-padding-top: 90px; /* slightly more than navbar height */
+  scroll-behavior: smooth;
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -39,4 +44,9 @@
 
 .read-the-docs {
   color: #888;
+}
+
+[data-aos] {
+  will-change: transform, opacity;
+  transition-property: transform, opacity;
 }

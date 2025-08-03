@@ -8,7 +8,7 @@ const Footer = () => {
     };
 
     return (
-        <footer className={styles.footerContainer}>
+        <footer id='contact' className={styles.footerContainer}>
             {/* Logo Section */}
             <div className={styles.footerSection}>
                 <img className={styles.footerLogoImg} src={logo} alt="Logo" />
