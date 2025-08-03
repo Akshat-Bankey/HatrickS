@@ -1,10 +1,11 @@
-import React, { Suspense, lazy } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
 import AboutUs from '../components/AboutUs';
 import SportsPage from '../components/SportsPage.jsx';
 import ContactUs from '../components/Form.jsx';
 import Footer from '../components/Footer.jsx';
+import AutoScrollGallery from '../components/AutoScrollGallery.jsx';
 import styles from './Home.module.css';
 
 // Uncomment to use lazy loading instead of direct imports
@@ -14,39 +15,77 @@ import styles from './Home.module.css';
 // const Footer = lazy(() => import('../components/Footer.jsx'));
 
 const Home = () => {
-  return (
-    <div className={styles.pageContainer}>
-      <header className={styles.headerSection}>
-        <Navbar />
-        <div className={styles.heroWrapper}>
-          <Hero />
+    const galleryRef = useRef(null);
+    const [isGalleryVisible, setIsGalleryVisible] = useState(false);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setIsGalleryVisible(true);
+                    observer.unobserve(galleryRef.current);
+                }
+            },
+            {
+                root: null,
+                rootMargin: "0px",
+                threshold: 0.1
+            }
+        );
+
+        if (galleryRef.current) {
+            observer.observe(galleryRef.current);
+        }
+
+        return () => {
+            if (galleryRef.current) {
+                observer.unobserve(galleryRef.current);
+            }
+        };
+    }, []);
+
+    return (
+        <div className={styles.pageContainer}>
+            <header className={styles.headerSection}>
+                <Navbar />
+                <div className={styles.heroWrapper}>
+                    <Hero />
+                </div>
+            </header>
+            <div className={styles.homeContainer}>
+                <section className={styles.aboutWrapper}>
+                    <AboutUs />
+                </section>
+
+                <section className={styles.sportsSection}>
+                    <div className={styles.contentContainer}>
+                        <SportsPage />
+                    </div>
+                </section>
+
+                <section
+                    ref={galleryRef}
+                    className={`${styles.gallerySection} ${isGalleryVisible ? styles['is-visible'] : ''}`}
+                >
+                    <div className={styles.contentContainer}>
+                        <AutoScrollGallery />
+                    </div>
+                </section>
+
+                <section className={styles.formSectionWrapper}>
+                    <div className={styles.contentContainer}>
+                        <ContactUs />
+                    </div>
+                </section>
+
+                <section className={styles.footerSectionWrapper}>
+                    <div className={styles.contentContainer}>
+                        <Footer />
+                    </div>
+                </section>
+            </div>
         </div>
-      </header>
-      <div className={styles.homeContainer}>
-          <section className={styles.aboutWrapper}>
-            <AboutUs />
-          </section>
-
-          <section className={styles.sportsSection}>
-            <div className={styles.contentContainer}>
-              <SportsPage />
-            </div>
-          </section>
-
-          <section className={styles.formSectionWrapper}>
-            <div className={styles.contentContainer}>
-              <ContactUs />
-            </div>
-          </section>
-
-          <section className={styles.footerSectionWrapper}>
-            <div className={styles.contentContainer}>
-              <Footer />
-            </div>
-          </section>
-      </div>
-    </div>
-  );
+    );
 };
 
 export default Home;

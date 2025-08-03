@@ -1,22 +1,5 @@
-import React, { useState, useRef, useEffect, lazy, Suspense } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import styles from "./Form.module.css";
-
-// Lazy load contact info component
-const ContactInfo = lazy(() => Promise.resolve({
-    default: ({ contactInfo }) => (
-        <div className={styles.contactInfoContainer}>
-            {contactInfo.map((item, index) => (
-                <a href={item.link} key={index} className={styles.contactInfoItem}>
-                    <span className={styles.contactIcon}>{item.icon}</span>
-                    <div>
-                        <h4>{item.title}</h4>
-                        <p>{item.info}</p>
-                    </div>
-                </a>
-            ))}
-        </div>
-    )
-}));
 
 const ContactUs = () => {
     const [formData, setFormData] = useState({
@@ -32,31 +15,23 @@ const ContactUs = () => {
     const [formSubmitted, setFormSubmitted] = useState(false);
     const formRef = useRef(null);
 
-    // Track if component is visible
-    const [isVisible, setIsVisible] = useState(false);
-
     useEffect(() => {
         const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting) {
-                    // Add visible class for animation
-                    entry.target.classList.add(styles.visible);
-                    // Set visible state to load heavy components
-                    setIsVisible(true);
-                }
+            (entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add(styles.visible);
+                        observer.unobserve(entry.target);
+                    }
+                });
             },
-            { threshold: 0.1, rootMargin: '100px' }
+            { threshold: 0.2 }
         );
 
-        if (formRef.current) {
-            observer.observe(formRef.current);
-        }
+        const elements = document.querySelectorAll('.reveal-on-scroll');
+        elements.forEach(el => observer.observe(el));
 
-        return () => {
-            if (formRef.current) {
-                observer.unobserve(formRef.current);
-            }
-        };
+        return () => observer.disconnect();
     }, []);
 
     const handleChange = (e) => {
@@ -104,7 +79,7 @@ const ContactUs = () => {
     ];
 
     return (
-        <div id="contact" className={styles.bigContainer} ref={formRef}>
+        <div id="contact" className={`${styles.bigContainer} reveal-on-scroll`} ref={formRef}>
             <div className={styles.container}>
                 {/* Left section with form and contact info */}
                 <div className={styles.formContainer}>
@@ -114,9 +89,17 @@ const ContactUs = () => {
                         <p className={styles.description}>Have questions about our services or want to discuss your project? Fill out the form below and our team will get back to you within 24 hours.</p>
                     </div>
 
-                    <Suspense fallback={<div className={styles.loadingContainer}><div className={styles.loadingSpinner}></div></div>}>
-                        <ContactInfo contactInfo={contactInfo} />
-                    </Suspense>
+                    <div className={styles.contactInfoContainer}>
+                        {contactInfo.map((item, index) => (
+                            <a href={item.link} key={index} className={styles.contactInfoItem}>
+                                <span className={styles.contactIcon}>{item.icon}</span>
+                                <div>
+                                    <h4>{item.title}</h4>
+                                    <p>{item.info}</p>
+                                </div>
+                            </a>
+                        ))}
+                    </div>
 
                     {formSubmitted ? (
                         <div className={styles.successMessage}>
@@ -246,25 +229,13 @@ const ContactUs = () => {
                 {/* Right section with Google Map */}
                 <div className={styles.mapContainer}>
                     <div className={styles.mapOverlay}></div>
-                    <div className={styles.mapPlaceholder}>
-                        <div className={styles.mapLoading}>
-                            <div className={styles.loadingSpinner}></div>
-                            <p>Loading map...</p>
-                        </div>
-                    </div>
-                    {isVisible && (
-                        <iframe
-                            src="https://www.google.com/maps/d/embed?mid=1R9MZewfvnFak2jfBdLf6bPSh7_rTfA4&ehbc=2E312F"
-                            title="Google Map"
-                            allowFullScreen
-                            loading="lazy"
-                            className={styles.mapIframe}
-                            onLoad={() => {
-                                const placeholder = document.querySelector(`.${styles.mapPlaceholder}`);
-                                if (placeholder) placeholder.style.display = 'none';
-                            }}
-                        ></iframe>
-                    )}
+                    <iframe
+                        src="https://www.google.com/maps/d/embed?mid=1R9MZewfvnFak2jfBdLf6bPSh7_rTfA4&ehbc=2E312F"
+                        title="Google Map"
+                        allowFullScreen
+                        loading="lazy"
+                        className={styles.mapIframe}
+                    ></iframe>
                 </div>
             </div>
         </div>
