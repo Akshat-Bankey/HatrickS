@@ -75,7 +75,7 @@ const SportsDisplay = () => {
   };
 
   return (
-    <div className={styles.sportsDisplayContainer}>
+    <div  id="sports" className={styles.sportsDisplayContainer}>
 
       <div className={styles.sportsGrid}>
         {sportsData.map((sport) => (

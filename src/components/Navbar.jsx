@@ -7,25 +7,32 @@ const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
 
-  // Handle scroll effects
+  // ✅ Scroll to section smoothly with offset
+  const scrollToSection = (sectionId) => {
+    setMobileMenuOpen(false);
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const yOffset = -80; // Adjust based on your navbar height
+      const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+  };
+
+  // ✅ Highlight active section on scroll
   useEffect(() => {
     const handleScroll = () => {
-      // Set scrolled state based on scroll position
-      const scrollPosition = window.scrollY;
-      setScrolled(scrollPosition > 10);
+      setScrolled(window.scrollY > 10);
 
-      // Update active section based on scroll position
       const sections = ['home', 'about', 'sports', 'services', 'contact'];
-
-      sections.forEach(section => {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
+      for (const section of sections) {
+        const el = document.getElementById(section);
+        if (el) {
+          const rect = el.getBoundingClientRect();
           if (rect.top <= 100 && rect.bottom >= 100) {
             setActiveSection(section);
           }
         }
-      });
+      }
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -33,18 +40,6 @@ const Navbar = () => {
 
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  // Handle smooth scrolling
-  const scrollToSection = (sectionId) => {
-    setMobileMenuOpen(false);
-    const element = document.getElementById(sectionId);
-    if (element) {
-      window.scrollTo({
-        top: element.offsetTop - 80,
-        behavior: 'smooth'
-      });
-    }
-  };
 
   return (
     <header className={`${styles.navbar} ${scrolled ? styles.scrolled : ''}`}>
@@ -79,10 +74,18 @@ const Navbar = () => {
               {activeSection === section && <span className={styles.activeIndicator}></span>}
             </a>
           ))}
-          <a href="#contact" className={styles.ctaButton} onClick={(e) => {
-            e.preventDefault();
-            scrollToSection('contact');
-          }}>Get in Touch</a>
+
+          {/* ✅ Fix for "Get in Touch" CTA button */}
+          <a 
+            href="#contact"
+            className={styles.ctaButton}
+            onClick={(e) => {
+              e.preventDefault();
+              scrollToSection('contact');
+            }}
+          >
+            Get in Touch
+          </a>
         </nav>
       </div>
     </header>
@@ -90,5 +93,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
-
