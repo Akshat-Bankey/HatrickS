@@ -1,14 +1,36 @@
 import React, { useRef, useEffect } from "react";
 import styles from "./AutoScrollGallery.module.css";
 
+// ...existing code...
 const images = [
-    { src: "/images/gallery1.jpg", title: "Football Training" },
-    { src: "/images/gallery2.jpg", title: "Basketball Court" },
-    { src: "/images/gallery3.jpg", title: "Cricket Session" },
-    { src: "/images/gallery4.jpg", title: "Tennis Match" },
-    { src: "/images/gallery5.jpg", title: "Swimming Pool" },
-    { src: "/images/gallery6.jpg", title: "Gym Area" },
+  {
+    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Cricket_ground_Kurla_Mumbai_India.jpg/640px-Cricket_ground_Kurla_Mumbai_India.jpg",
+    title: "Cricket Ground"
+  },
+  {
+    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Indoor_Basketball_Court.jpg/640px-Indoor_Basketball_Court.jpg",
+    title: "Basketball Court"
+  },
+  {
+    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/St_George%27s_Park_Football_center.jpg/640px-St_George%27s_Park_Football_center.jpg",
+    title: "Football Academy"
+  },
+  {
+    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Tennis_Court.jpg/640px-Tennis_Court.jpg",
+    title: "Tennis Court"
+  },
+  {
+    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Swimming_pool_empty.jpg/640px-Swimming_pool_empty.jpg",
+    title: "Swimming Pool Facility"
+  },
+  {
+    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Home_gym.jpg/640px-Home_gym.jpg",
+    title: "Gym & Fitness Area"
+  }
 ];
+
+
+// ...existing code...
 
 const AutoScrollGallery = () => {
     const scrollRef = useRef(null);
@@ -39,7 +61,7 @@ const AutoScrollGallery = () => {
     }, []);
 
     return (
-        <div className={styles.galleryWrapper}>
+        <div id='services' className={styles.galleryWrapper}>
             <h2 className={styles.galleryHeading}>Our Facilities</h2>
             <div className={styles.galleryContainer} ref={scrollRef}>
                 {[...images, ...images].map((item, index) => (

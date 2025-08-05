@@ -22,7 +22,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <div className={styles.sliderContainer}>
+    <div id='home' className={styles.sliderContainer}>
       {/* Background Slides */}
       {slides.map((slide, index) => (
         <div
