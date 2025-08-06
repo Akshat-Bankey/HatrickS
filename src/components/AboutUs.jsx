@@ -3,10 +3,10 @@ import styles from './AboutUs.module.css';
 
 const AboutUs = () => {
   return (
-    <section id='about' className={styles.section} data-aos="fade-left"
-  data-aos-duration="600"          // Fast animation
-  data-aos-easing="ease-in-out"    // Snappy motion
-  data-aos-offset="100" >
+        <section id='about' className={styles.section} data-aos="fade-left"
+      data-aos-duration="600"          // Fast animation
+      data-aos-easing="ease-in-out"    // Snappy motion
+      data-aos-offset="100" >
       <div className={styles.container} data-aos="fade-left"
       data-aos-delay="50"           // Quick delay
       data-aos-duration="600"

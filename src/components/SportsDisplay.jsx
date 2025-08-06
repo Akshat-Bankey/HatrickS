@@ -58,6 +58,13 @@ const sportsData = [
     description: 'Improve your badminton skills with our specialized training focusing on footwork, strokes, and game strategy.',
     imageUrl: 'https://images.pexels.com/photos/6203673/pexels-photo-6203673.jpeg',
     features: ['Indoor courts', 'Equipment provided', 'Technique refinement', 'Competitive matches']
+  },
+  {
+    id: 8,
+    name: 'Gymnastics',
+    description: 'Improve your badminton skills with our specialized training focusing on footwork, strokes, and game strategy.',
+    imageUrl: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    features: ['Indoor courts', 'Equipment provided', 'Technique refinement', 'Competitive matches']
   }
 ];
 

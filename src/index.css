@@ -84,4 +84,5 @@ img, iframe {
 /* Reduce layout shifts */
 html {
   scroll-padding-top: 80px; /* Account for fixed navbar height */
+  scroll-behavior: smooth;
 }

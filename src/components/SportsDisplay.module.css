@@ -2,8 +2,13 @@
 .sportsDisplayContainer {
   width: 100%;
   margin: 0 auto;
-  padding: 0.5rem;
+  padding: 4rem 0rem;
   color: #333;
+  background: transparent; /* fallback */
+  /*background: linear-gradient(120deg, #2193b0, #6dd5ed, #fbc2eb); !* 💡 blue to pink *!*/
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+  transition: background 0.3s ease;
 }
 
 /* Heading style */
@@ -11,7 +16,7 @@
   text-align: center;
   font-size: 2.5rem;
   margin-bottom: 2rem;
-  color: #0B6623;
+  color: #e5e7ea;
   position: relative;
 }
 
@@ -29,8 +34,8 @@
 .sportsGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  margin-bottom: 2rem;
+  gap: 3rem;
+  margin-bottom: 3rem;
   position: relative; /* For proper z-index handling */
   z-index: 1;
 }
@@ -74,6 +79,20 @@
   z-index: 20; /* Ensure flipped card stays on top */
 }
 
+.sportCard.active {
+  z-index: 10;
+  transform: translateY(-6px) scale(1.02);
+  border: 2px solid #ff6ec7;
+  box-shadow: 0 12px 30px rgba(255, 110, 199, 0.4), 0 0 12px #ffb3e6;
+  background: linear-gradient(135deg, #ffffff, #ffe6f7);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.sportCard:hover,
+.sportCard.active {
+  will-change: transform;
+}
+
+
 /* Card front and back common styles */
 .sportCardFront, .sportCardBack {
   position: absolute;
@@ -89,12 +108,12 @@
 
 /* Front of card */
 .sportCardFront {
-  background-color: #f8f8f8;
+  background-color: #ffffff;
 }
 
 /* Back of card - flipped */
 .sportCardBack {
-  background-color: white;
+  background: linear-gradient(135deg, #a6e1d2, #579098, #133952); /* fallback */
   transform: rotateY(180deg);
   padding: 1rem;
   justify-content: flex-start;
@@ -258,5 +277,28 @@
 
   .sportFeatures ul {
     font-size: 0.85rem;
+  }
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0 50%; }
+}
+@media (max-width: 768px) {
+  .sportsDisplayContainer {
+    padding: 1rem;
+  }
+
+  .sportsHeading {
+    font-size: 2rem;
+  }
+
+  .sportCard {
+    height: auto; /* ⬅️ ensures content fits on smaller devices */
+  }
+
+  .sportImage {
+    height: 180px;
   }
 }
