@@ -18,7 +18,7 @@ const slides = [
       fontFamily: 'Poppins, sans-serif',
       textAlign: 'center',
       top: '25%',
-      left: '50%',
+      left: '40%',
       transform: 'translate(-10%,-25%)'
     },
     titleColor: '#000000',
