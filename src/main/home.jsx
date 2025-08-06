@@ -9,13 +9,6 @@ import AutoScrollGallery from '../components/AutoScrollGallery.jsx';
 import styles from './Home.module.css';
 import Clients from '../components/Clients.jsx';
 
-
-// Uncomment to use lazy loading instead of direct imports
-// const AboutUs = lazy(() => import('../components/AboutUs'));
-// const SportsPage = lazy(() => import('../components/SportsPage.jsx'));
-// const ContactUs = lazy(() => import('../components/Form.jsx'));
-// const Footer = lazy(() => import('../components/Footer.jsx'));
-
 const Home = () => {
     const galleryRef = useRef(null);
     const [isGalleryVisible, setIsGalleryVisible] = useState(false);
@@ -51,33 +44,36 @@ const Home = () => {
             <header className={styles.headerSection}>
                 <Navbar />
                 <div id='home' className={styles.heroWrapper}>
-                    <Hero />
+                    <div className={styles.contentContainer}>
+                        <Hero />
+                    </div>
                 </div>
             </header>
             <div className={styles.homeContainer}>
                 <section id='about' className={styles.aboutWrapper}>
-                    <AboutUs />
+                    <div className={styles.centeredContent}>
+                        <div className={styles.contentContainer}>
+                            <AboutUs />
+                        </div>
+                    </div>
                 </section>
 
-                <section  id="sports" className={styles.sportsSection}>
-                    <div  className={styles.contentContainer}>
+                {/*<section id="sports" className={styles.sportsSection}>*/}
+                    <div className={styles.contentContainer}>
                         <SportsPage />
                     </div>
-                </section>
-                
-           <section className={styles.clientsSectionWrapper}>
-           <div className={styles.contentContainer}>
-            <Clients />
-           </div>
-           </section>
-      
-                <section id='services'
-                    ref={galleryRef}
-                    className={`${styles.gallerySection} ${isGalleryVisible ? styles['is-visible'] : ''}`}
-                >
+                {/*</section>*/}
+
+                <section className={styles.clientsSectionWrapper}>
                     <div className={styles.contentContainer}>
-                        <AutoScrollGallery />
+                        <Clients />
                     </div>
+                </section>
+
+                <section id='services'
+                         ref={galleryRef}
+                         className={`${styles.gallerySection} ${isGalleryVisible ? styles['is-visible'] : styles['fadeIn']}`}                >
+                        <AutoScrollGallery />
                 </section>
 
                 <section id='contact' className={styles.formSectionWrapper}>
@@ -86,8 +82,8 @@ const Home = () => {
                     </div>
                 </section>
 
-                <section id='contact' className={styles.footerSectionWrapper}>
-                    <div className={styles.contentContainer}>
+                <section id='footer' className={styles.footerSectionWrapper}>
+                    <div>
                         <Footer />
                     </div>
                 </section>

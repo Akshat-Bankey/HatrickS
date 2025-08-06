@@ -1,21 +1,28 @@
 .clientsSection {
-  background-color: #6c8b5c;
-  padding: 60px 20px;
+  background: linear-gradient(120deg, #235d72, #607a4f, #d0f0c0);
+  background-size: 300% 300%;
+  animation: gradientShift 15s ease infinite;
+  padding: 40px 10px;
   text-align: center;
+  position: relative;
 }
 
 .heading {
-  font-size: 2.5rem;
-  margin-bottom: 2rem;
+  font-size: 2.2rem;
   color: #e3ff00;
   font-weight: bold;
+  margin-bottom: 1rem;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
 }
 
-.carousel {
+.carouselWrapper {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  position: relative;
+  max-width: 100%;
+  gap: 20px;
+  padding: 0 20px;
 }
 
 .arrow {
@@ -24,34 +31,98 @@
   color: white;
   border: none;
   cursor: pointer;
-  padding: 10px;
-  transition: transform 0.2s ease;
+  padding: 8px;
+  transition: transform 0.2s ease, color 0.3s ease;
+  z-index: 2;
 }
 
 .arrow:hover {
   transform: scale(1.2);
+  color: #ffff66;
 }
 
-.logoContainer {
-  display: flex;
-  gap: 40px; /* increased space between logos */
-  overflow: hidden;
-  justify-content: center;
+.logoGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, auto);
+  gap: 20px;
+  justify-items: center;
   align-items: center;
+  width: 100%;
+  max-width: 900px;
+  padding: 10px;
 }
 
 .logoWrapper {
-  flex: 0 0 auto;
-  max-height: 180px; /* increased from 120px */
+  padding: 6px;
+  background-color: rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.logoImage {
-  height: 160px; /* previously 100px */
-  object-fit: contain;
-  max-width: 280px; /* more generous width */
-  filter: none;
+.logoWrapper:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2);
+}
+.left {
+  left:0
+}
+.right{
+  right:0
 }
 
+.logoImage {
+  height: 100px;
+  max-width: 200px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.2));
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .logoGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .arrow {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .logoGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .logoImage {
+    height: 80px;
+    max-width: 160px;
+  }
+
+  .heading {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .logoGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .logoImage {
+    height: 60px;
+  }
+
+  .arrow {
+    font-size: 1.8rem;
+  }
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}

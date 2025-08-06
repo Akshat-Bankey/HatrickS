@@ -1,6 +1,6 @@
 .galleryWrapper {
     padding: 60px 0;
-    background: #B6B09F; /* A light gray */
+    background: linear-gradient(to bottom, #5b7496, #193405);
     text-align: center;
     overflow: hidden;
 }
@@ -10,7 +10,7 @@
 .galleryHeading {
     font-size: 2rem;
     margin-bottom: 20px;
-    color: #333;
+    color: #eee4d4;
 }
 
 .galleryContainer {
@@ -28,12 +28,12 @@
 
 .imageCard {
     flex: 0 0 auto;
-    width: 250px;
-    height: 180px;
+    width: 300px;
+    height: 250px;
     border-radius: 10px;
     overflow: hidden;
     position: relative;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
 }
 
@@ -54,7 +54,7 @@
     width: 100%;
     padding: 10px;
     background: rgba(0, 0, 0, 0.6);
-    color: white;
+    color: #c9bba0;
     font-size: 1rem;
     text-align: center;
     font-weight: 500;

@@ -3,16 +3,16 @@
     position: relative; /* Changed from absolute to relative */
     width: 100%;
     min-height: 30vh; /* Minimum height instead of fixed height */
-    background-color: #FFB823; /* Dark background */
-    color: black; /* White text */
     font-family: "Segoe UI Semibold";
     display: flex;
     justify-content: space-around; /* Space between sections */
     align-items: center; /* Center items vertically */
     flex-wrap: wrap; /* Wrap content on small screens */
-    padding: 0.5rem; /* Stable padding */
     box-sizing: border-box; /* Include padding and border in height and width calculations */
-    padding-left: 4rem;
+    background: linear-gradient(to bottom, #612791, #002761);
+    color: white;
+    font-size: 1rem;
+    padding: 0px 20px;
 }
 
 /* Footer Sections */

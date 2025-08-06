@@ -13,37 +13,37 @@ const logos = [client1, client2, client3, client4, client5, client6, client7];
 
 const Clients = () => {
   const [startIndex, setStartIndex] = useState(0);
-  const visibleCount = 4;
+  const visibleCount = 8; // 2 rows x 4 columns
 
   const handlePrev = () => {
-    setStartIndex((prev) => (prev - 1 + logos.length) % logos.length);
+    setStartIndex((prev) => (prev - visibleCount + logos.length) % logos.length);
   };
 
   const handleNext = () => {
-    setStartIndex((prev) => (prev + 1) % logos.length);
+    setStartIndex((prev) => (prev + visibleCount) % logos.length);
   };
 
   const visibleLogos = [...logos, ...logos].slice(startIndex, startIndex + visibleCount);
 
   return (
-    <section className={styles.clientsSection} id="clients">
-      <h2 className={styles.heading}>Our Clients</h2>
-      <div className={styles.carousel}>
-        <button className={styles.arrow} onClick={handlePrev}>
-          &#8249;
-        </button>
-        <div className={styles.logoContainer}>
-          {visibleLogos.map((logo, index) => (
-            <div className={styles.logoWrapper} key={index}>
-              <img src={logo} alt={`Client ${index + 1}`} className={styles.logoImage} />
-            </div>
-          ))}
+      <section className={styles.clientsSection} id="clients">
+        <h2 className={styles.heading}>Our Clients</h2>
+        <div className={styles.carouselWrapper}>
+          <button className={`${styles.arrow} ${styles.left}`} onClick={handlePrev}>
+            &#8249;
+          </button>
+          <div className={styles.logoGrid}>
+            {visibleLogos.map((logo, index) => (
+                <div className={styles.logoWrapper} key={index}>
+                  <img src={logo} alt={`Client ${index + 1}`} className={styles.logoImage} />
+                </div>
+            ))}
+          </div>
+          <button className={`${styles.arrow} ${styles.right}`} onClick={handleNext}>
+            &#8250;
+          </button>
         </div>
-        <button className={styles.arrow} onClick={handleNext}>
-          &#8250;
-        </button>
-      </div>
-    </section>
+      </section>
   );
 };
 

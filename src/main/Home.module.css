@@ -2,30 +2,34 @@
 .pageContainer {
     width: 100%;
     min-height: 100vh;
-    position: relative;
     overflow-x: hidden;
     display: flex;
     flex-direction: column;
+    background-color: #f7fdf7;
+    font-family: "Poppins", sans-serif;
+    color: #2D4F2B;
+    scroll-behavior: smooth;
 }
 
 /* Header section containing both Navbar and Hero */
 .headerSection {
     width: 100%;
     position: relative;
-    z-index: 5; /* Higher than content but allows proper scrolling */
+    z-index: 5;
     display: flex;
     flex-direction: column;
     background-attachment: scroll;
-    overflow: visible; /* Allow navbar to be visible when fixed */
+    overflow: visible;
 }
 
-/* Hero section wrapper - integrates visually with navbar */
+/* Hero section */
 .heroWrapper {
     width: 100%;
     position: relative;
-    z-index: 0;
-    margin-top: 0; /* Reset margin as navbar is now fixed with proper styling */
-    padding-top: 80px; /* Keep padding for navbar height */
+    padding-top: 80px;
+    background: linear-gradient(135deg, #004d00, #153f2d, #7bb663);
+    background-size: 300% 300%;
+    animation: gradientShift 18s ease infinite;
 }
 
 /* Main content container */
@@ -33,129 +37,161 @@
     width: 100%;
     min-height: 100vh;
     position: relative;
-    background-color: #ffffff; /* Ensure solid background */
-    z-index: 1; /* Higher than hero */
+    background: linear-gradient(135deg, #5c0075, #2c3e50, #a6d49f);
+    margin-top: 0px;
+    z-index: 1;
     overflow-x: hidden;
-    margin-top: -2px; /* Remove any gap between hero and content */
-    border-top: 2px solid transparent; /* Smooth transition */
     display: flex;
     flex-direction: column;
 }
 
-/* Consistent container for section content */
+/* Shared section container */
 .contentContainer {
     width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px;
 }
 
-/* About section wrapper */
+/* About Section */
 .aboutWrapper {
     width: 100%;
-    position: relative;
-    background-color: #ffffff;
-    z-index: 3;
+    padding: 0;
+    background: linear-gradient(135deg, #5c0075, #2c3e50, #a6d49f);
+    background-size: 300% 300%;
+    animation: gradientShift 15s ease infinite;
+    color: white;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
-/* About section inner content - for content width management */
+/* Inner content wrapper */
 .aboutContent {
     width: 100%;
     max-width: 100%;
 }
 
-/* Content wrapper styles */
 .contentWrapper {
     display: flex;
     flex-direction: column;
     width: 100%;
     margin: 0 auto;
     padding: 0;
-    position: relative;
     background-color: #ffffff;
     z-index: 2;
 }
 
-/* Sports section wrapper to ensure proper centering */
+/* Sports Section */
 .sportsSection {
     width: 100%;
-    margin: 0;
-    position: relative;
-    background-color: #c96b6b;
-    z-index: 2;
+    background: linear-gradient(135deg, #5c0075, #2c3e50, #a6d49f);
+    background-size: 300% 300%;
+    animation: gradientShift 20s ease infinite;
+    padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    /*padding: 40px 0;*/
 }
 
-.spacer {
-    height: 40px;
-    background-color: #ffffff;
-}
-
-/* Form section wrapper to ensure proper centering */
-.formSectionWrapper {
+/* Clients Section */
+.clientsSectionWrapper {
     width: 100%;
+    padding: 0;
+    background: linear-gradient(135deg, #5c0075, #2c3e50, #a6d49f);
+    background-size: 300% 300%;
+    animation: gradientShift 15s ease infinite;
+    color: white;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+/* Gallery Section */
+.gallerySection {
+    padding: 0;
+    background: linear-gradient(to bottom, #1a2421, #3e4d3b, #91c989);
+    background-size: 300% 300%;
+    animation: gradientShift 22s ease infinite;
+}
+
+/* Form Section */
+.formSectionWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
     position: relative;
-    /*background-color: #ffffff;*/
-    z-index: 3;
+    z-index: 1;
     padding: 0;
     margin: 0;
 }
 
 .formSection {
-    margin: 0;
-    padding: 40px 0;
-    min-height: 400px;
-    position: relative;
-    width: 100%;
-    background-color: #ffffff;
-    z-index: 2;
+    padding: 0;
+    background: linear-gradient(135deg, #5c0075, #2c3e50, #a6d49f);
+    background-size: 300% 300%;
+    animation: gradientShift 18s ease infinite;
+    min-height: 300px;
 }
 
-/* Footer section wrapper to ensure proper centering */
+/* Footer */
 .footerSectionWrapper {
     width: 100%;
-    display: flex;
     justify-content: center;
     align-items: center;
+    background: linear-gradient(135deg, #5c0075, #2c3e50, #a6d49f);
     position: relative;
-    background-color: #1a1a1a; /* Dark background for footer */
     z-index: 2;
-    padding: 0;
-    margin: 0;
 }
 
 .footerSection {
-    margin: 0;
-    width: 100%;
-    position: relative;
-    background-color: #1a1a1a; /* Dark background for footer */
+    background: linear-gradient(135deg, #5c0075, #2c3e50, #a6d49f);
+    padding: 20px;
     color: #ffffff;
-    z-index: 2;
-    padding: 40px 0 20px;
 }
 
-/* Responsive adjustments */
+/* Centering utility */
+.centeredContent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 100%;
+    padding: 0 1rem;
+    box-sizing: border-box;
+}
+
+/* Gradient animation */
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Responsive behavior */
 @media (max-width: 768px) {
+    .aboutWrapper,
     .sportsSection,
-    .formSection {
-        margin: 40px 0;
+    .formSection,
+    .gallerySection {
+        padding: 60px 16px;
+    }
+
+    .contentContainer {
+        padding: 40px 16px;
+    }
+
+    .heroWrapper {
+        padding-top: 60px;
     }
 
     .spacer {
         height: 20px;
     }
 }
-.footerWrapper {
-    margin-top: 20%;
-    position: relative;
-    height: auto;
-}
-.gallerySection {
-    padding: 60px 0;
-    background-color: #1a2421;
+
+@media (max-width: 480px) {
+    .contentContainer {
+        padding: 30px 12px;
+    }
 }

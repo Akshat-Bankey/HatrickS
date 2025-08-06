@@ -1,30 +1,36 @@
 import React, { useRef, useEffect } from "react";
 import styles from "./AutoScrollGallery.module.css";
+import gallery1 from '../assets/gallery1.jpg';
+import gallery2 from '../assets/gallery2.jpg';
+import gallery3 from '../assets/gallery3.jpg';
+import gallery4 from '../assets/gallery4.jpg';
+import gallery5 from '../assets/gallery5.jpg';
+import gallery6 from '../assets/gallery6.jpg';
 
 // ...existing code...
 const images = [
   {
-    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Cricket_ground_Kurla_Mumbai_India.jpg/640px-Cricket_ground_Kurla_Mumbai_India.jpg",
-    title: "Cricket Ground"
+      src:gallery1,
+      title: "Cricket Ground"
   },
   {
-    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Indoor_Basketball_Court.jpg/640px-Indoor_Basketball_Court.jpg",
+    src: gallery2,
     title: "Basketball Court"
   },
   {
-    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/St_George%27s_Park_Football_center.jpg/640px-St_George%27s_Park_Football_center.jpg",
+    src: gallery3,
     title: "Football Academy"
   },
   {
-    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Tennis_Court.jpg/640px-Tennis_Court.jpg",
+    src: gallery4,
     title: "Tennis Court"
   },
   {
-    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Swimming_pool_empty.jpg/640px-Swimming_pool_empty.jpg",
+    src: gallery5,
     title: "Swimming Pool Facility"
   },
   {
-    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Home_gym.jpg/640px-Home_gym.jpg",
+    src:gallery6,
     title: "Gym & Fitness Area"
   }
 ];
