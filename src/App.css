@@ -1,15 +1,99 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+/* Fullscreen loader container */
+.loader-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-color: #0b0b0b;
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  opacity: 1;
+  transition: color 0.8s ease-out;
 }
 
+/* Fades out loader when class added */
+.loader-wrapper.fade-out {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.8s ease;
+
+}
+
+
+/* Logo shimmer wrapper */
+.logo-shimmer {
+  width: 400px;
+  height: 120px;
+  background-image: url('./assets/logo.png'); /* adjust path as needed */
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* Shimmer effect */
+.logo-shimmer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+          120deg,
+          transparent,
+          rgba(255, 255, 255, 0.4),
+          transparent
+  );
+  transform: skewX(-20deg);
+  animation: shimmer 2s infinite;
+}
+
+/* Shimmer animation */
+@keyframes shimmer {
+  0% {
+    left: -75%;
+  }
+  50% {
+    left: 100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* Loading text below logo */
+.loading-text {
+  color: #eda904;
+  font-size: 1.3rem;
+  margin-top: 20px;
+  letter-spacing: 1px;
+  animation: fadeInText 1.5s ease-in-out forwards;
+  opacity: 0;
+}
+
+/* Fade-in text */
+@keyframes fadeInText {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Global scroll behavior */
 html {
-  scroll-padding-top: 90px; /* slightly more than navbar height */
+  scroll-padding-top: 90px;
   scroll-behavior: smooth;
 }
 
+/* Misc styling (unchanged) */
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -22,30 +106,17 @@ html {
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 @media (prefers-reduced-motion: no-preference) {
   a:nth-of-type(2) .logo {
     animation: logo-spin infinite 20s linear;
   }
 }
-
 .card {
   padding: 2em;
 }
-
 .read-the-docs {
   color: #888;
 }
-
 [data-aos] {
   will-change: transform, opacity;
   transition-property: transform, opacity;
