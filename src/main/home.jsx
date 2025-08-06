@@ -64,7 +64,7 @@ const Home = () => {
                     </div>
                 {/*</section>*/}
 
-                <section className={styles.clientsSectionWrapper}>
+                <section id='clients' className={styles.clientsSectionWrapper}>
                     <div className={styles.contentContainer}>
                         <Clients />
                     </div>

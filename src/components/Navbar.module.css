@@ -110,12 +110,20 @@
 .ctaButton {
   background: var(--accent);
   color: var(--dark) !important;
-  padding: 0.6rem 1.2rem !important;
-  border-radius: var(--border-radius-full);
+  margin-left: auto;
+  padding: 0.3rem 0.5rem; /* 🔧 Slightly reduced padding */
+  border-radius: 999px;
   font-weight: 700 !important;
-  margin-left: 1rem;
+  font-size: 0.5rem; /* 🔧 Smaller font size for better fit */
   transition: all var(--transition-fast);
+  white-space: nowrap;
   box-shadow: var(--shadow-sm);
+  display: inline-flex; /* 🔧 Ensures button only takes needed width */
+  align-items: center;
+  justify-content: center;
+  max-width: 200px; /* 🔧 Prevent button from stretching too wide */
+  height: 35px;
+  text-align: center;
 }
 
 .ctaButton:hover {
@@ -227,7 +235,6 @@
   display: flex;
   gap: 1.5rem;
   align-items: center;
-  flex-wrap: wrap-reverse;
   padding-right: 10%;
 }
 

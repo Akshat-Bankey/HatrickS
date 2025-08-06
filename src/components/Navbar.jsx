@@ -23,7 +23,7 @@ const Navbar = () => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 10);
 
-      const sections = ['home', 'about', 'sports', 'services', 'contact'];
+      const sections = ['home', 'about', 'sports', 'services','clients', 'contact'];
       for (const section of sections) {
         const el = document.getElementById(section);
         if (el) {
@@ -60,7 +60,7 @@ const Navbar = () => {
         </button>
 
         <nav className={`${styles.navLinks} ${mobileMenuOpen ? styles.mobileOpen : ''}`}>
-          {['home', 'about', 'sports', 'services', 'contact'].map(section => (
+          {['home', 'about', 'sports', 'services','clients', 'contact'].map(section => (
             <a 
               key={section}
               href={`#${section}`}
