@@ -18,12 +18,13 @@
 }
 
 .navContainer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  max-width: 1400px;
-  padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1400px;
+    flex-wrap: wrap; /* ✅ allow wrapping */
+    padding: 0 1rem;
 }
 
 /* Class added when scrolled */
@@ -54,8 +55,10 @@
 
 .logoText {
   font-family: var(--font-heading);
+    padding-top: 1rem;
   font-weight: 700;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
+  white-space: nowrap;
   color: white;
   letter-spacing: 0.5px;
 }
@@ -66,9 +69,13 @@
 }
 
 .navLinks {
-  display: flex;
-  gap: 2rem;
-  align-items: center;
+    display: flex;
+    flex-wrap: wrap;  /* ✅ allow wrapping when zoomed */
+    gap: 1.2rem;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 1rem;
+    max-width: 100%;
 }
 
 .navLinks a {
@@ -110,20 +117,23 @@
 .ctaButton {
   background: var(--accent);
   color: var(--dark) !important;
-  margin-left: auto;
+  margin-left: 20px;
   padding: 0.3rem 0.5rem; /* 🔧 Slightly reduced padding */
   border-radius: 999px;
+  font-size: 1rem !important;
   font-weight: 700 !important;
-  font-size: 0.5rem; /* 🔧 Smaller font size for better fit */
   transition: all var(--transition-fast);
   white-space: nowrap;
   box-shadow: var(--shadow-sm);
   display: inline-flex; /* 🔧 Ensures button only takes needed width */
   align-items: center;
   justify-content: center;
-  max-width: 200px; /* 🔧 Prevent button from stretching too wide */
-  height: 35px;
+  max-width: 240px; /* 🔧 Prevent button from stretching too wide */
+  height: 40px;
   text-align: center;
+}
+.getInTouch{
+    margin: 12px 10px 10px 10px;
 }
 
 .ctaButton:hover {

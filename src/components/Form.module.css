@@ -144,12 +144,14 @@
 .formField {
     flex: 1;
     position: relative;
+    color: black; /* Default label color */
+
     /*transition: all var(--transition-fast);*/
 }
 
-.formField.active .label {
+.formField .label {
     color: #FFFFFF;
-    transform: translateY(-35px) scale(0.85);
+    transform: translateY(-32px) scale(0.85);
 }
 
 .label {
@@ -377,7 +379,7 @@
     border: 1px solid #555;
     border-radius: 4px;
     background-color: #FFF1CA;
-    color: white;
+    color: #171716;
     width: 100%;
 }
 

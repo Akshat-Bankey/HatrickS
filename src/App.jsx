@@ -5,7 +5,6 @@ import NProgress from 'nprogress';
 import 'aos/dist/aos.css';
 import 'nprogress/nprogress.css';
 import './App.css'; // Ensure CSS contains loader styles
-import logo from './assets/logo.png';
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -25,7 +24,7 @@ const App = () => {
       setTimeout(() => {
         setLoading(false); // remove loader after fade
       }, 800); // should match the CSS transition duration
-    }, 1500); // control how long loading stays
+    }, 1200); // control how long loading stays
 
     NProgress.done();
     return () => clearTimeout(timer);

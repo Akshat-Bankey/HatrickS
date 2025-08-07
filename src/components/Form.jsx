@@ -47,29 +47,30 @@ const ContactUs = () => {
         setActiveField(field);
     };
 
-    const handleBlur = () => {
-        setActiveField(null);
-    };
 
-    const handleSubmit = (e) => {
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // Simulate form submission
-        setTimeout(() => {
-            setFormSubmitted(true);
-            setFormData({
-                name: '',
-                email: '',
-                phone: '',
-                state: '',
-                country: '',
-                inquiry: ''
+
+        try {
+            const res = await fetch('http://localhost:5000/api/form', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
             });
 
-            // Reset success message after 5 seconds
-            setTimeout(() => {
-                setFormSubmitted(false);
-            }, 5000);
-        }, 1000);
+            if (res.ok) {
+                setFormSubmitted(true);
+            } else {
+                const data = await res.json();
+                alert(data.message || 'Something went wrong');
+            }
+        } catch (error) {
+            console.error("Error submitting form:", error);
+            alert("Failed to submit. Please try again later.");
+        }
     };
 
     // Contact information
@@ -78,6 +79,15 @@ const ContactUs = () => {
         { icon: '✉️', title: 'Email', info: 'info@hatricksports.com', link: 'mailto:info@hatricksports.com' },
         { icon: '📍', title: 'Office', info: 'New Delhi, India', link: 'https://goo.gl/maps/YourLocationLink' }
     ];
+    const [touchedFields, setTouchedFields] = useState({});
+    const handleBlur = (field) => {
+        setActiveField(null);
+        setTouchedFields(prev => ({
+            ...prev,
+            [field]: true
+        }));
+    };
+
 
     return (
         <div id="contact" className={`${styles.bigContainer} reveal-on-scroll`} ref={formRef}>
@@ -111,7 +121,7 @@ const ContactUs = () => {
                     ) : (
                         <form className={styles.form} onSubmit={handleSubmit}>
                             <div className={styles.inputGroup}>
-                                <div className={`${styles.formField} ${activeField === 'name' ? styles.active : ''}`}>
+                                <div className={`${styles.formField} ${activeField === 'name' || touchedFields.name ? styles.active : ''}`}>
                                     <label className={styles.label} htmlFor="name">
                                         Full Name
                                     </label>
@@ -128,7 +138,7 @@ const ContactUs = () => {
                                     />
                                 </div>
 
-                                <div className={`${styles.formField} ${activeField === 'email' ? styles.active : ''}`}>
+                                <div className={`${styles.formField} ${activeField === 'email' || touchedFields.email ? styles.active : ''}`}>
                                     <label className={styles.label} htmlFor="email">
                                         Email Address
                                     </label>
@@ -147,7 +157,7 @@ const ContactUs = () => {
                             </div>
 
                             <div className={styles.inputGroup}>
-                                <div className={`${styles.formField} ${activeField === 'phone' ? styles.active : ''}`}>
+                                <div className={`${styles.formField} ${activeField === 'phone' || touchedFields.phone ? styles.active : ''}`}>
                                     <label className={styles.label} htmlFor="phone">
                                         Phone Number
                                     </label>
@@ -164,7 +174,7 @@ const ContactUs = () => {
                                     />
                                 </div>
 
-                                <div className={`${styles.formField} ${activeField === 'state' ? styles.active : ''}`}>
+                                <div className={`${styles.formField} ${activeField === 'state' || touchedFields.state ? styles.active : ''}`}>
                                     <label className={styles.label} htmlFor="state">
                                         State
                                     </label>
@@ -182,7 +192,7 @@ const ContactUs = () => {
                                 </div>
                             </div>
 
-                            <div className={`${styles.formField} ${activeField === 'country' ? styles.active : ''}`}>
+                            <div className={`${styles.formField} ${activeField === 'country' || touchedFields.country ? styles.active : ''}`}>
                                 <label className={styles.label} htmlFor="country">
                                     Country
                                 </label>
@@ -199,7 +209,7 @@ const ContactUs = () => {
                                 />
                             </div>
 
-                            <div className={`${styles.formField} ${activeField === 'inquiry' ? styles.active : ''}`}>
+                            <div className={`${styles.formField} ${activeField === 'inquiry' || touchedFields.inquiry ? styles.active : ''}`}>
                                 <label className={styles.label} htmlFor="inquiry">
                                     Your Message
                                 </label>
