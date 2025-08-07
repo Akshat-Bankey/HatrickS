@@ -78,7 +78,10 @@
     gap: 15px;
     margin-bottom: 15px;
 }
-
+.active{
+    background-color: rgba(0, 0, 0, 0.05);
+    transform: translateY(-2px);
+}
 .contactInfoItem {
     display: flex;
     align-items: center;
