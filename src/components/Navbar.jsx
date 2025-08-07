@@ -84,7 +84,7 @@ const Navbar = () => {
               scrollToSection('contact');
             }}
           >
-            Get in Touch
+           <p class={styles.getInTouch}>Get in Touch </p>
           </a>
         </nav>
       </div>

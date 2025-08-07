@@ -9,8 +9,8 @@ const slides = [
 
   {
     image: slide2,
-    title: 'YOUR COMPLETE',
-    subtitle: 'TURF SOLUTION',
+    title: 'PREMIUM SPORTS',
+    subtitle: 'INSTALLATIONS',
     description: '',
     buttonText: 'See Services',
     overlayStyle: {
@@ -32,8 +32,8 @@ const slides = [
   },
   {
     image: slide3,
-    title: 'PREMIUM SPORTS',
-    subtitle: 'INSTALLATIONS',
+    title: 'YOUR COMPLETE ',
+    subtitle: 'TURF SOLUTION',
     description: 'We build professional-grade courts & arenas.',
     buttonText: 'Our Projects',
     overlayStyle: {

@@ -54,7 +54,7 @@
           transparent
   );
   transform: skewX(-20deg);
-  animation: shimmer 2s infinite;
+  animation: shimmer 2.5s infinite;
 }
 
 /* Shimmer animation */
